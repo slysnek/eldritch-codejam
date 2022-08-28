@@ -2,17 +2,28 @@ import {brownCards,blueCards,greenCards} from "./data/mythicCards/index.js"
 import ancientsData from "./data/ancients.js";
 import difficulties from "./data/difficulties.js";
 import cardsData from "./data/mythicCards/brown/index.js";
-//кололы
+//колоды
 const azathothDeck = document.querySelector('.azathoth')
 const cthulthuDeck = document.querySelector('.cthulthu')
 const iogsothothDeck = document.querySelector('.iogsothoth')
 const shobniggurathDeck = document.querySelector('.shobniggurath')
+//счетчики
+const greenCardsСounter = document.querySelectorAll('.green');
+const brownCardsСounter = document.querySelectorAll('.brown');
+const blueCardsСounter = document.querySelectorAll('.blue');
 
 const shuffle = document.querySelector('.shuffle')
 
+let stages = {
+    firstStage: [],
+    secondStage: [],
+    thirdStage: []
+}
+
+
 //собираем начальную колоду
 function initializeDeck(creatureName){
-    let stages = {
+    stages = {
         firstStage: [],
         secondStage: [],
         thirdStage: []
@@ -63,7 +74,47 @@ function initializeDeck(creatureName){
 }
 
 function shuffleDeck(){
-    
+//обновление зеленого счетчика
+    let counter = 0;
+    let stage = 0;
+    //луп по стейджам
+    for (let b in stages){
+        counter = 0;
+        //луп по картам
+        for(let c in stages[b]){
+            if(stages[b][c].color === 'green'){
+                counter++;
+            }
+        }
+        greenCardsСounter[stage].innerHTML = counter;
+        stage++;
+    }
+//обновление коричневого счетчика
+counter = 0;
+stage = 0;
+for (let b in stages){
+    counter = 0;
+    for(let c in stages[b]){
+        if(stages[b][c].color === 'brown'){
+            counter++;
+        }
+    }
+    brownCardsСounter[stage].innerHTML = counter;
+    stage++;
+}
+//обновление голубого счетчика
+counter = 0;
+stage = 0;
+for (let b in stages){
+    counter = 0;
+    for(let c in stages[b]){
+        if(stages[b][c].color === 'blue'){
+            counter++;
+        }
+    }
+    blueCardsСounter[stage].innerHTML = counter;
+    stage++;
+}
 }
 
 azathothDeck.addEventListener('click', () => {
@@ -78,6 +129,7 @@ iogsothothDeck.addEventListener('click', () => {
 shobniggurathDeck.addEventListener('click', () => {
     initializeDeck('shubNiggurath')
 })
+
 shuffle.addEventListener('click', () => {
-    shuffleDeck;
+    shuffleDeck();
 })
