@@ -88,6 +88,30 @@ h2{
     cursor: pointer;
 }
 
+.azathoth{
+    background-image: url(./assets/Ancients/Azathoth.jpg);
+}
+
+.cthulthu{
+    background-image: url(./assets/Ancients/Cthulthu.jpg);
+}
+
+.iogsothoth{
+    background-image: url(./assets/Ancients/IogSothoth.jpg);
+}
+
+.shobniggurath{
+    background-image: url(./assets/Ancients/ShubNiggurath.jpg);
+}
+
+.shuffle{
+    cursor: pointer;
+}
+
+.shuffle:hover{
+    transform: translateY(-2px);
+}
+
 @media screen and (max-width: 700px) {
     .deck{
         width: 144px;
