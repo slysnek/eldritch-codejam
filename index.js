@@ -11,21 +11,25 @@ const shobniggurathDeck = document.querySelector('.shobniggurath')
 const greenCardsСounter = document.querySelectorAll('.green');
 const brownCardsСounter = document.querySelectorAll('.brown');
 const blueCardsСounter = document.querySelectorAll('.blue');
-
+//секции и кнопки
 const difficultySection = document.querySelector('.difficulty-section')
 const shuffleSection = document.querySelector('.shuffle-section')
 const shuffle = document.querySelector('.shuffle')
 
 const cardBackground = document.querySelector('.card-background')
-
 const final = document.querySelector('.final-message')
+//сложности
+const veryEasy = document.querySelector('.very-easy')
+const easy = document.querySelector('.easy')
+const normal = document.querySelector('.normal')
+const hard = document.querySelector('.hard')
+const veryHard = document.querySelector('.very-hard')
 
 let stages = {
     firstStage: [],
     secondStage: [],
     thirdStage: []
 }
-
 
 //собираем начальную колоду
 function initializeDeck(creatureName){
@@ -125,7 +129,7 @@ for (let b in stages){
     stage++;
 }
 }
-
+//раздача карт
 function getCard(){
     if(document.querySelector('.chosen-card')){
         document.querySelector('.chosen-card').remove();
@@ -158,24 +162,103 @@ function getCard(){
     console.log(stages[stage]);
     updateCounter();
 }
+//смена сложности
+function changeDifficulty(){
+
+}
 
 azathothDeck.addEventListener('click', () => {
+    if(document.querySelector('.active')){
+        document.querySelector('.active').classList.remove('active')
+        azathothDeck.classList.add('active')
+    } else {
+        azathothDeck.classList.add('active')
+    }
     initializeDeck('azathoth')
 })
 cthulthuDeck.addEventListener('click', () => {
+    if(document.querySelector('.active')){
+        document.querySelector('.active').classList.remove('active')
+        cthulthuDeck.classList.add('active')
+    } else {
+        cthulthuDeck.classList.add('active')
+    }
     initializeDeck('cthulhu')
 })
 iogsothothDeck.addEventListener('click', () => {
+    if(document.querySelector('.active')){
+        document.querySelector('.active').classList.remove('active')
+        iogsothothDeck.classList.add('active')
+    } else {
+        iogsothothDeck.classList.add('active')
+    }
     initializeDeck('iogSothoth')
 })
 shobniggurathDeck.addEventListener('click', () => {
+    if(document.querySelector('.active')){
+        document.querySelector('.active').classList.remove('active')
+        shobniggurathDeck.classList.add('active')
+    } else {
+        shobniggurathDeck.classList.add('active')
+    }
     initializeDeck('shubNiggurath')
 })
+
+veryEasy.addEventListener('click', () => {
+    if(document.querySelector('.active-difficulty')){
+        document.querySelector('.active-difficulty').classList.remove('active-difficulty')
+        veryEasy.classList.add('active-difficulty')
+    } else {
+        veryEasy.classList.add('active-difficulty')
+    }
+    changeDifficulty();
+})
+
+easy.addEventListener('click', () => {
+    if(document.querySelector('.active-difficulty')){
+        document.querySelector('.active-difficulty').classList.remove('active-difficulty')
+        easy.classList.add('active-difficulty')
+    } else {
+        easy.classList.add('active-difficulty')
+    }
+    changeDifficulty();
+})
+
+normal.addEventListener('click', () => {
+    if(document.querySelector('.active-difficulty')){
+        document.querySelector('.active-difficulty').classList.remove('active-difficulty')
+        normal.classList.add('active-difficulty')
+    } else {
+        normal.classList.add('active-difficulty')
+    }
+    changeDifficulty();
+})
+
+hard.addEventListener('click', () => {
+    if(document.querySelector('.active-difficulty')){
+        document.querySelector('.active-difficulty').classList.remove('active-difficulty')
+        hard.classList.add('active-difficulty')
+    } else {
+        hard.classList.add('active-difficulty')
+    }
+    changeDifficulty();
+})
+
+veryHard.addEventListener('click', () => {
+    if(document.querySelector('.active-difficulty')){
+        document.querySelector('.active-difficulty').classList.remove('active-difficulty')
+        veryHard.classList.add('active-difficulty')
+    } else {
+        veryHard.classList.add('active-difficulty')
+    }
+    changeDifficulty();
+})
+
 
 shuffle.addEventListener('click', () => {
     updateCounter();
 })
-
 cardBackground.addEventListener('click', () => {
     getCard();
 })
+
