@@ -26,7 +26,6 @@ body{
     background-position: center;
     background-color: #333333;
     height: 100vh;
-    min-height: fit-content;
 }
 
 main{
@@ -36,10 +35,19 @@ main{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    padding: 10px 25px;
 }
 
-h2{
+h2, h3{
     text-align: center;
+}
+
+
+
+.difficulty-section{
+    display: flex;
+    width: 25%;
+    justify-content: center;
 }
 
 .difficulty-wrapper{
@@ -63,6 +71,7 @@ h2{
 }
 
 .deck-section{
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,12 +113,78 @@ h2{
     background-image: url(./assets/Ancients/ShubNiggurath.jpg);
 }
 
+.shuffle-section{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+}
+
 .shuffle{
     cursor: pointer;
+    text-align: center;
 }
 
 .shuffle:hover{
     transform: translateY(-2px);
+}
+
+.stages{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+.color-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.green{
+    background-color: green;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.brown{
+    background-color: brown;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.blue{
+    background-color: blue;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.card-background{
+    width: 222px;
+    height: 287px;
+    background-image: url(./assets/mythicCardBackground.jpg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+.card-background:hover{
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 980px) {
+    .deck{
+        width: 144px;
+        height: 187px;
+    }
+
+    .card-background{
+        width: 144px;
+        height: 187px;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -117,9 +192,18 @@ h2{
         width: 144px;
         height: 187px;
     }
+
+    .card-background{
+        width: 144px;
+        height: 187px;
+    }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+    body{
+        height: 100%;
+    }
+    
     html{
         font-size: 20px;
     }
@@ -127,8 +211,27 @@ h2{
         flex-direction: column;
     }
 
+    .deck-section, .shuffle-section, .difficulty-section{
+        width: 100%;
+    }
+
     .deck{
         width: 111px;
         height: 144px;
+    }
+
+    .card-background{
+        width: 111px;
+        height: 144px;
+    }
+
+    .stages{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body{
+        height: 100%;
     }
 }

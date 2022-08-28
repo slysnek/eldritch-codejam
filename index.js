@@ -2,11 +2,13 @@ import {brownCards,blueCards,greenCards} from "./data/mythicCards/index.js"
 import ancientsData from "./data/ancients.js";
 import difficulties from "./data/difficulties.js";
 import cardsData from "./data/mythicCards/brown/index.js";
-
+//кололы
 const azathothDeck = document.querySelector('.azathoth')
 const cthulthuDeck = document.querySelector('.cthulthu')
 const iogsothothDeck = document.querySelector('.iogsothoth')
 const shobniggurathDeck = document.querySelector('.shobniggurath')
+
+const shuffle = document.querySelector('.shuffle')
 
 //собираем начальную колоду
 function initializeDeck(creatureName){
@@ -22,7 +24,7 @@ function initializeDeck(creatureName){
             creature = ancientsData[i];
         }
     }
-    
+
     //добавляем карты в первый стейдж
     for(let i = 0; i < creature.firstStage.greenCards; i++){
         stages.firstStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
@@ -60,19 +62,22 @@ function initializeDeck(creatureName){
 
 }
 
+function shuffleDeck(){
+    
+}
 
 azathothDeck.addEventListener('click', () => {
     initializeDeck('azathoth')
 })
-
 cthulthuDeck.addEventListener('click', () => {
     initializeDeck('cthulhu')
 })
-
 iogsothothDeck.addEventListener('click', () => {
     initializeDeck('iogSothoth')
 })
-
 shobniggurathDeck.addEventListener('click', () => {
     initializeDeck('shubNiggurath')
+})
+shuffle.addEventListener('click', () => {
+    shuffleDeck;
 })
