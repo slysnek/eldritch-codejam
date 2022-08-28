@@ -12,7 +12,13 @@ const greenCardsСounter = document.querySelectorAll('.green');
 const brownCardsСounter = document.querySelectorAll('.brown');
 const blueCardsСounter = document.querySelectorAll('.blue');
 
+const difficultySection = document.querySelector('.difficulty-section')
+const shuffleSection = document.querySelector('.shuffle-section')
 const shuffle = document.querySelector('.shuffle')
+
+const cardBackground = document.querySelector('.card-background')
+
+const final = document.querySelector('.final-message')
 
 let stages = {
     firstStage: [],
@@ -28,6 +34,9 @@ function initializeDeck(creatureName){
         secondStage: [],
         thirdStage: []
     }
+
+    //делаем видимым меню выбора сложности
+    difficultySection.classList.remove('hidden')
 
     let creature;
     for (let i in ancientsData){
@@ -70,10 +79,10 @@ function initializeDeck(creatureName){
     console.log(stages.firstStage);
     console.log(stages.secondStage);
     console.log(stages.thirdStage);
-
 }
-
-function shuffleDeck(){
+//обновляем счетчики
+function updateCounter(){
+    final.classList.add('hidden')
 //обновление зеленого счетчика
     let counter = 0;
     let stage = 0;
@@ -117,6 +126,39 @@ for (let b in stages){
 }
 }
 
+function getCard(){
+    if(document.querySelector('.chosen-card')){
+        document.querySelector('.chosen-card').remove();
+    }
+    let stage = 'firstStage'
+    if(stages.firstStage.length === 0){
+        stage = 'secondStage';
+    }
+    if(stages.secondStage.length === 0){
+        stage = 'thirdStage';
+    }
+    if(stages.thirdStage.length === 0){
+        final.classList.remove('hidden')
+        return
+/*         let final = document.createElement('p');
+        final.innerHTML = 'There are no cards left!'
+        shuffleSection.append(final)
+        return */
+    }
+    let chosenCard = Math.floor(Math.random() * stages[stage].length);
+    let objectCard = stages[stage][chosenCard];
+
+    let card = document.createElement('div');
+    card.classList.add('chosen-card')
+
+    card.style.backgroundImage = `url(./assets/MythicCards/${objectCard.color}/${objectCard.cardFace})`
+    shuffleSection.appendChild(card)
+
+    stages[stage].splice(chosenCard, 1)
+    console.log(stages[stage]);
+    updateCounter();
+}
+
 azathothDeck.addEventListener('click', () => {
     initializeDeck('azathoth')
 })
@@ -131,5 +173,9 @@ shobniggurathDeck.addEventListener('click', () => {
 })
 
 shuffle.addEventListener('click', () => {
-    shuffleDeck();
+    updateCounter();
+})
+
+cardBackground.addEventListener('click', () => {
+    getCard();
 })

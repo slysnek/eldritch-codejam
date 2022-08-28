@@ -175,6 +175,20 @@ h2, h3{
     opacity: 0.8;
 }
 
+.chosen-card{
+    width: 222px;
+    height: 287px;
+    background-size: cover;
+}
+
+.hidden{
+    display: none;
+}
+
+.active{
+    border: 1px solid green;
+}
+
 @media screen and (max-width: 980px) {
     .deck{
         width: 144px;
@@ -185,15 +199,8 @@ h2, h3{
         width: 144px;
         height: 187px;
     }
-}
 
-@media screen and (max-width: 700px) {
-    .deck{
-        width: 144px;
-        height: 187px;
-    }
-
-    .card-background{
+    .chosen-card{
         width: 144px;
         height: 187px;
     }
