@@ -39,9 +39,6 @@ function initializeDeck(creatureName){
         thirdStage: []
     }
 
-    //делаем видимым меню выбора сложности
-    difficultySection.classList.remove('hidden')
-
     let creature;
     for (let i in ancientsData){
         if (ancientsData[i].id === creatureName){
@@ -163,10 +160,17 @@ function getCard(){
     updateCounter();
 }
 //смена сложности
-function changeDifficulty(){
+function changeDifficulty(chosenDifficulty){
+    shuffleSection.classList.remove('hidden')
+
+
+
+
+
 
 }
 
+//древние
 azathothDeck.addEventListener('click', () => {
     if(document.querySelector('.active')){
         document.querySelector('.active').classList.remove('active')
@@ -174,6 +178,10 @@ azathothDeck.addEventListener('click', () => {
     } else {
         azathothDeck.classList.add('active')
     }
+    
+    //делаем видимым меню выбора сложности
+    difficultySection.classList.remove('hidden')
+
     initializeDeck('azathoth')
 })
 cthulthuDeck.addEventListener('click', () => {
@@ -183,6 +191,10 @@ cthulthuDeck.addEventListener('click', () => {
     } else {
         cthulthuDeck.classList.add('active')
     }
+    
+    //делаем видимым меню выбора сложности
+    difficultySection.classList.remove('hidden')
+
     initializeDeck('cthulhu')
 })
 iogsothothDeck.addEventListener('click', () => {
@@ -192,6 +204,10 @@ iogsothothDeck.addEventListener('click', () => {
     } else {
         iogsothothDeck.classList.add('active')
     }
+    
+    //делаем видимым меню выбора сложности
+    difficultySection.classList.remove('hidden')
+
     initializeDeck('iogSothoth')
 })
 shobniggurathDeck.addEventListener('click', () => {
@@ -201,9 +217,14 @@ shobniggurathDeck.addEventListener('click', () => {
     } else {
         shobniggurathDeck.classList.add('active')
     }
+    
+    //делаем видимым меню выбора сложности
+    difficultySection.classList.remove('hidden')
+
     initializeDeck('shubNiggurath')
 })
 
+//сложности
 veryEasy.addEventListener('click', () => {
     if(document.querySelector('.active-difficulty')){
         document.querySelector('.active-difficulty').classList.remove('active-difficulty')
@@ -211,7 +232,7 @@ veryEasy.addEventListener('click', () => {
     } else {
         veryEasy.classList.add('active-difficulty')
     }
-    changeDifficulty();
+    changeDifficulty('very easy');
 })
 
 easy.addEventListener('click', () => {
@@ -221,7 +242,7 @@ easy.addEventListener('click', () => {
     } else {
         easy.classList.add('active-difficulty')
     }
-    changeDifficulty();
+    changeDifficulty('easy');
 })
 
 normal.addEventListener('click', () => {
@@ -231,7 +252,7 @@ normal.addEventListener('click', () => {
     } else {
         normal.classList.add('active-difficulty')
     }
-    changeDifficulty();
+    changeDifficulty('normal');
 })
 
 hard.addEventListener('click', () => {
@@ -241,7 +262,7 @@ hard.addEventListener('click', () => {
     } else {
         hard.classList.add('active-difficulty')
     }
-    changeDifficulty();
+    changeDifficulty('hard');
 })
 
 veryHard.addEventListener('click', () => {
@@ -251,10 +272,10 @@ veryHard.addEventListener('click', () => {
     } else {
         veryHard.classList.add('active-difficulty')
     }
-    changeDifficulty();
+    changeDifficulty('very hard');
 })
 
-
+//кнопки
 shuffle.addEventListener('click', () => {
     updateCounter();
 })
