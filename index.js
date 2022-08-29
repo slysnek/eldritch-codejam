@@ -585,10 +585,6 @@ function getCard(){
     if(stages.thirdStage.length === 0){
         final.classList.remove('hidden')
         return
-/*         let final = document.createElement('p');
-        final.innerHTML = 'There are no cards left!'
-        shuffleSection.append(final)
-        return */
     }
     let chosenCard = Math.floor(Math.random() * stages[stage].length);
     let objectCard = stages[stage][chosenCard];

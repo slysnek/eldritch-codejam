@@ -21,7 +21,7 @@ body{
     justify-content: center;
     align-items: center;
     background-image: url(/assets/home.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     background-position: center;
     background-color: #333333;
@@ -41,8 +41,6 @@ main{
 h2, h3{
     text-align: center;
 }
-
-
 
 .difficulty-section{
     display: flex;
@@ -118,6 +116,7 @@ h2, h3{
     flex-direction: column;
     width: 25%;
     align-items: center;
+    gap: 15px;
 }
 
 .shuffle{
@@ -134,7 +133,6 @@ h2, h3{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
 }
 
 .color-wrapper{
@@ -186,11 +184,11 @@ h2, h3{
 }
 
 .active{
-    border: 1px solid green;
+    border: 2px solid green;
 }
 
 .active-difficulty{
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
 @media screen and (max-width: 980px) {
