@@ -176,7 +176,8 @@ function initializeDeck(creatureName, difficulty){
         let i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -185,7 +186,8 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -194,7 +196,8 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -204,7 +207,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -213,7 +218,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -222,7 +229,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -232,7 +241,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
@@ -241,7 +253,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
@@ -250,7 +265,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'easy'){
+            if (card.difficulty !== 'easy'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
