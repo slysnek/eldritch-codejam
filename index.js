@@ -51,34 +51,70 @@ function initializeDeck(creatureName, difficulty){
 
     if(difficulty === 'normal'){
         //добавляем карты в первый стейдж
-        for(let i = 0; i < creature.firstStage.greenCards; i++){
-            stages.firstStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        while(stages.firstStage.length < creature.firstStage.greenCards){
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)];
+            if(!stages.firstStage.includes(card)){
+                stages.firstStage.push(card)
+            }
+        } 
+        while(stages.firstStage.length < (creature.firstStage.greenCards + creature.firstStage.blueCards)){
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)];
+            if(!stages.firstStage.includes(card)){
+                stages.firstStage.push(card)
+            }
         }
-        for(let i = 0; i < creature.firstStage.blueCards; i++){
-            stages.firstStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-        }
-        for(let i = 0; i < creature.firstStage.brownCards; i++){
-            stages.firstStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
-        }
+        while(stages.firstStage.length < (creature.firstStage.greenCards + creature.firstStage.blueCards + creature.firstStage.brownCards)){
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)];
+            if(!stages.firstStage.includes(card)){
+                stages.firstStage.push(card)
+            }
+        } 
         //добавляем карты во второй стейдж
-        for(let i = 0; i < creature.secondStage.greenCards; i++){
-            stages.secondStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        while(stages.secondStage.length < creature.secondStage.greenCards){
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)];
+            if(!stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.secondStage.push(card)
+            }
         }
-        for(let i = 0; i < creature.secondStage.blueCards; i++){
-            stages.secondStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-        }
-        for(let i = 0; i < creature.secondStage.brownCards; i++){
-            stages.secondStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
-        }
+        while(stages.secondStage.length < (creature.secondStage.greenCards + creature.secondStage.blueCards)){
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)];
+            if(!stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.secondStage.push(card)
+            }
+        } 
+        while(stages.secondStage.length < (creature.secondStage.greenCards + creature.secondStage.blueCards + creature.secondStage.brownCards)){
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)];
+            if(!stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.secondStage.push(card)
+            }
+        } 
         //добавляем карты в третий стейдж
-        for(let i = 0; i < creature.thirdStage.greenCards; i++){
-            stages.thirdStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        while(stages.thirdStage.length < creature.thirdStage.greenCards){
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)];
+            if(!stages.thirdStage.includes(card)
+            && !stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.thirdStage.push(card)
+            }
+        } 
+        while(stages.thirdStage.length < (creature.thirdStage.greenCards + creature.thirdStage.blueCards)){
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)];
+            if(!stages.thirdStage.includes(card)
+            && !stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.thirdStage.push(card)
+            }
         }
-        for(let i = 0; i < creature.thirdStage.blueCards; i++){
-            stages.thirdStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-        }
-        for(let i = 0; i < creature.thirdStage.brownCards; i++){
-            stages.thirdStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
+        while(stages.thirdStage.length < (creature.thirdStage.greenCards + creature.thirdStage.blueCards + creature.thirdStage.brownCards)){
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)];
+            if(!stages.thirdStage.includes(card)
+            && !stages.secondStage.includes(card)
+            && !stages.firstStage.includes(card)){
+                stages.thirdStage.push(card)
+            }
         }
         console.log(stages.firstStage);
         console.log(stages.secondStage);
@@ -88,7 +124,8 @@ function initializeDeck(creatureName, difficulty){
         let i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -97,7 +134,8 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -106,7 +144,8 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.firstStage.includes(card)){
                 stages.firstStage.push(card)
                 i++;
             }
@@ -116,7 +155,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -125,7 +166,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -134,7 +177,9 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.secondStage.push(card)
                 i++;
             }
@@ -144,7 +189,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = greenCards[Math.floor(Math.random() * greenCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
@@ -153,7 +201,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = blueCards[Math.floor(Math.random() * blueCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
@@ -162,7 +213,10 @@ function initializeDeck(creatureName, difficulty){
         i = 0;
         do{
             let card = brownCards[Math.floor(Math.random() * brownCards.length)]
-            if (card.difficulty !== 'hard'){
+            if (card.difficulty !== 'hard'
+            && !stages.thirdStage.includes(card) 
+            && !stages.secondStage.includes(card) 
+            && !stages.firstStage.includes(card)){
                 stages.thirdStage.push(card)
                 i++;
             }
