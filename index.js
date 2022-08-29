@@ -16,6 +16,7 @@ const difficultySection = document.querySelector('.difficulty-section')
 const shuffleSection = document.querySelector('.shuffle-section')
 const shuffle = document.querySelector('.shuffle')
 
+const stagesWrapper = document.querySelector('.stages-wrapper')
 const cardBackground = document.querySelector('.card-background')
 const final = document.querySelector('.final-message')
 //сложности
@@ -31,6 +32,8 @@ let stages = {
     thirdStage: []
 }
 
+let creature;
+
 //собираем начальную колоду
 function initializeDeck(creatureName){
     stages = {
@@ -39,12 +42,12 @@ function initializeDeck(creatureName){
         thirdStage: []
     }
 
-    let creature;
+/*     let creature;
     for (let i in ancientsData){
         if (ancientsData[i].id === creatureName){
             creature = ancientsData[i];
         }
-    }
+    } */
 
     //добавляем карты в первый стейдж
     for(let i = 0; i < creature.firstStage.greenCards; i++){
@@ -161,7 +164,7 @@ function getCard(){
 }
 //смена сложности
 function changeDifficulty(chosenDifficulty){
-    shuffleSection.classList.remove('hidden')
+    shuffle.classList.remove('hidden')
 
 
 
@@ -220,7 +223,7 @@ shobniggurathDeck.addEventListener('click', () => {
     
     //делаем видимым меню выбора сложности
     difficultySection.classList.remove('hidden')
-
+    creature = 'shubNiggurath'
     initializeDeck('shubNiggurath')
 })
 
@@ -278,6 +281,9 @@ veryHard.addEventListener('click', () => {
 //кнопки
 shuffle.addEventListener('click', () => {
     updateCounter();
+    stagesWrapper.classList.remove('hidden')
+    cardBackground.classList.remove('hidden')
+    shuffle.classList.add('hidden')
 })
 cardBackground.addEventListener('click', () => {
     getCard();
