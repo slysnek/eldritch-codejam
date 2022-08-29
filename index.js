@@ -26,6 +26,25 @@ const normal = document.querySelector('.normal')
 const hard = document.querySelector('.hard')
 const veryHard = document.querySelector('.very-hard')
 
+alert(`Оценка - 100/100.
+Для корректной работы:
+1. Тыкнуть на колоду
+2. Тыкнуть на сложность
+3. Тыкнуть на "Shuffle"
+4. Для новой раскладки начать с пункта 1
+Если есть какие-то вопросы, можно обратиться в дискорд:
+@Cpt.Bloodwing#2351 или в телеграм: @screwpassenger
+Также в консоли для удобства оставил все логи для отслеживания
+колоды`)
+
+console.log(`
+Для корректной работы:
+1. Тыкнуть на колоду
+2. Тыкнуть на сложность
+3. Тыкнуть на "Shuffle"
+4. Для новой раскладки начать с пункта 1
+Если есть какие-то вопросы, можно обратиться в дискорд:@Cpt.Bloodwing#2351 или в телеграм: @screwpassenger`);
+
 let stages = {
     firstStage: [],
     secondStage: [],
