@@ -33,56 +33,233 @@ let stages = {
 }
 
 let creature;
+let difficulty;
 
 //собираем начальную колоду
-function initializeDeck(creatureName){
+function initializeDeck(creatureName, difficulty){
     stages = {
         firstStage: [],
         secondStage: [],
         thirdStage: []
     }
 
-/*     let creature;
     for (let i in ancientsData){
         if (ancientsData[i].id === creatureName){
             creature = ancientsData[i];
         }
-    } */
-
-    //добавляем карты в первый стейдж
-    for(let i = 0; i < creature.firstStage.greenCards; i++){
-        stages.firstStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
-    }
-    for(let i = 0; i < creature.firstStage.blueCards; i++){
-        stages.firstStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-    }
-    for(let i = 0; i < creature.firstStage.brownCards; i++){
-        stages.firstStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
-    }
-    //добавляем карты во второй стейдж
-    for(let i = 0; i < creature.secondStage.greenCards; i++){
-        stages.secondStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
-    }
-    for(let i = 0; i < creature.secondStage.blueCards; i++){
-        stages.secondStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-    }
-    for(let i = 0; i < creature.secondStage.brownCards; i++){
-        stages.secondStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
-    }
-    //добавляем карты в третий стейдж
-    for(let i = 0; i < creature.thirdStage.greenCards; i++){
-        stages.thirdStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
-    }
-    for(let i = 0; i < creature.thirdStage.blueCards; i++){
-        stages.thirdStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
-    }
-    for(let i = 0; i < creature.thirdStage.brownCards; i++){
-        stages.thirdStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
     }
 
-    console.log(stages.firstStage);
-    console.log(stages.secondStage);
-    console.log(stages.thirdStage);
+    if(difficulty === 'normal'){
+        //добавляем карты в первый стейдж
+        for(let i = 0; i < creature.firstStage.greenCards; i++){
+            stages.firstStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        }
+        for(let i = 0; i < creature.firstStage.blueCards; i++){
+            stages.firstStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
+        }
+        for(let i = 0; i < creature.firstStage.brownCards; i++){
+            stages.firstStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
+        }
+        //добавляем карты во второй стейдж
+        for(let i = 0; i < creature.secondStage.greenCards; i++){
+            stages.secondStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        }
+        for(let i = 0; i < creature.secondStage.blueCards; i++){
+            stages.secondStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
+        }
+        for(let i = 0; i < creature.secondStage.brownCards; i++){
+            stages.secondStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
+        }
+        //добавляем карты в третий стейдж
+        for(let i = 0; i < creature.thirdStage.greenCards; i++){
+            stages.thirdStage.push(greenCards[Math.floor(Math.random() * greenCards.length)])
+        }
+        for(let i = 0; i < creature.thirdStage.blueCards; i++){
+            stages.thirdStage.push(blueCards[Math.floor(Math.random() * blueCards.length)])
+        }
+        for(let i = 0; i < creature.thirdStage.brownCards; i++){
+            stages.thirdStage.push(brownCards[Math.floor(Math.random() * brownCards.length)])
+        }
+        console.log(stages.firstStage);
+        console.log(stages.secondStage);
+        console.log(stages.thirdStage);
+    } else if (difficulty === 'easy'){
+        //добавляем карты в первый стейдж
+        let i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.blueCards)
+        
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.brownCards)
+
+        //добавляем карты во второй стейдж
+        i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.blueCards)
+
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.brownCards)
+
+        //добавляем карты в третий стейдж
+        i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.blueCards)
+
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'hard'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.brownCards)
+
+        console.log(stages.firstStage);
+        console.log(stages.secondStage);
+        console.log(stages.thirdStage);
+    }  else if (difficulty === 'hard'){
+        //добавляем карты в первый стейдж
+        let i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.blueCards)
+        
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.firstStage.push(card)
+                i++;
+            }
+        } while(i<creature.firstStage.brownCards)
+
+        //добавляем карты во второй стейдж
+        i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.blueCards)
+
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.secondStage.push(card)
+                i++;
+            }
+        } while(i<creature.secondStage.brownCards)
+
+        //добавляем карты в третий стейдж
+        i = 0;
+        do{
+            let card = greenCards[Math.floor(Math.random() * greenCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.greenCards)
+
+        i = 0;
+        do{
+            let card = blueCards[Math.floor(Math.random() * blueCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.blueCards)
+
+        i = 0;
+        do{
+            let card = brownCards[Math.floor(Math.random() * brownCards.length)]
+            if (card.difficulty !== 'easy'){
+                stages.thirdStage.push(card)
+                i++;
+            }
+        } while(i<creature.thirdStage.brownCards)
+
+        console.log(stages.firstStage);
+        console.log(stages.secondStage);
+        console.log(stages.thirdStage);
+    }
 }
 //обновляем счетчики
 function updateCounter(){
@@ -162,16 +339,6 @@ function getCard(){
     console.log(stages[stage]);
     updateCounter();
 }
-//смена сложности
-function changeDifficulty(chosenDifficulty){
-    shuffle.classList.remove('hidden')
-
-
-
-
-
-
-}
 
 //древние
 azathothDeck.addEventListener('click', () => {
@@ -184,8 +351,7 @@ azathothDeck.addEventListener('click', () => {
     
     //делаем видимым меню выбора сложности
     difficultySection.classList.remove('hidden')
-
-    initializeDeck('azathoth')
+    creature = 'azathoth'
 })
 cthulthuDeck.addEventListener('click', () => {
     if(document.querySelector('.active')){
@@ -197,8 +363,7 @@ cthulthuDeck.addEventListener('click', () => {
     
     //делаем видимым меню выбора сложности
     difficultySection.classList.remove('hidden')
-
-    initializeDeck('cthulhu')
+    creature = 'cthulhu'
 })
 iogsothothDeck.addEventListener('click', () => {
     if(document.querySelector('.active')){
@@ -210,8 +375,7 @@ iogsothothDeck.addEventListener('click', () => {
     
     //делаем видимым меню выбора сложности
     difficultySection.classList.remove('hidden')
-
-    initializeDeck('iogSothoth')
+    creature = 'iogSothoth'
 })
 shobniggurathDeck.addEventListener('click', () => {
     if(document.querySelector('.active')){
@@ -224,7 +388,6 @@ shobniggurathDeck.addEventListener('click', () => {
     //делаем видимым меню выбора сложности
     difficultySection.classList.remove('hidden')
     creature = 'shubNiggurath'
-    initializeDeck('shubNiggurath')
 })
 
 //сложности
@@ -235,7 +398,8 @@ veryEasy.addEventListener('click', () => {
     } else {
         veryEasy.classList.add('active-difficulty')
     }
-    changeDifficulty('very easy');
+    shuffle.classList.remove('hidden')
+    difficulty = "very easy"
 })
 
 easy.addEventListener('click', () => {
@@ -245,7 +409,8 @@ easy.addEventListener('click', () => {
     } else {
         easy.classList.add('active-difficulty')
     }
-    changeDifficulty('easy');
+    shuffle.classList.remove('hidden')
+    difficulty = "easy"
 })
 
 normal.addEventListener('click', () => {
@@ -255,7 +420,8 @@ normal.addEventListener('click', () => {
     } else {
         normal.classList.add('active-difficulty')
     }
-    changeDifficulty('normal');
+    shuffle.classList.remove('hidden')
+    difficulty = "normal"
 })
 
 hard.addEventListener('click', () => {
@@ -265,7 +431,8 @@ hard.addEventListener('click', () => {
     } else {
         hard.classList.add('active-difficulty')
     }
-    changeDifficulty('hard');
+    shuffle.classList.remove('hidden')
+    difficulty = "hard"
 })
 
 veryHard.addEventListener('click', () => {
@@ -275,15 +442,17 @@ veryHard.addEventListener('click', () => {
     } else {
         veryHard.classList.add('active-difficulty')
     }
-    changeDifficulty('very hard');
+    shuffle.classList.remove('hidden')
+    difficulty = "very hard"
 })
 
 //кнопки
 shuffle.addEventListener('click', () => {
-    updateCounter();
     stagesWrapper.classList.remove('hidden')
     cardBackground.classList.remove('hidden')
     shuffle.classList.add('hidden')
+    initializeDeck(creature, difficulty)
+    updateCounter();
 })
 cardBackground.addEventListener('click', () => {
     getCard();
